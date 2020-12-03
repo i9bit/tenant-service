@@ -16,7 +16,8 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "prettier"
+        "prettier",
+        "eslint-plugin-import-helpers"
     ],
     "rules": {
       "import/no-unresolved": "off",
@@ -30,6 +31,18 @@
       "no-shadow": "off",
       "@typescript-eslint/no-shadow": ["error"],
       "@typescript-eslint/camelcase": "off",
+      "import-helpers/order-imports": [
+        "warn",
+        { // example configuration
+          "newlinesBetween": "always",
+          "groups": [
+                "module",
+                "/^@/",
+                ["parent", "sibling", "index"]
+            ],
+            "alphabetize": { "order": "asc", "ignoreCase": true }
+        }
+    ],
       "@typescript-eslint/no-unused-vars": [
         "error",
         {

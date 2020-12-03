@@ -1,7 +1,7 @@
 import { QueryResponse, ScanResponse } from '@config/dynamoose';
 import ITenantRepository from '@modules/tenants/repositories/ITenantRepository';
-import Tenant from '../entities/Tenant';
 
+import Tenant from '../entities/Tenant';
 import Schema from '../entities/Tenant/schema';
 
 class TenantRepository implements ITenantRepository {

@@ -1,9 +1,10 @@
+import { inject, injectable } from 'tsyringe';
 import { v4 as uuid } from 'uuid';
 
-import { inject, injectable } from 'tsyringe';
+import ServiceException from '@shared/errors/ServiceException';
 
-import ITenantRepository from '../repositories/ITenantRepository';
 import Tenant from '../infra/dynamoose/entities/Tenant';
+import ITenantRepository from '../repositories/ITenantRepository';
 
 interface ICreateTenant {
   alias: string;
@@ -17,6 +18,14 @@ class CreateTenantService {
   ) {}
 
   async execute({ alias }: ICreateTenant): Promise<Tenant> {
+    const alreadyExists = await this.tenantRepository.getTenantByAlias(alias);
+
+    if (alreadyExists.count) {
+      throw new ServiceException({
+        message: "Alias for tenant doesn't available",
+        statusCode: 400,
+      });
+    }
     const response = await this.tenantRepository.create({
       id: uuid(),
       organization_id: uuid(),

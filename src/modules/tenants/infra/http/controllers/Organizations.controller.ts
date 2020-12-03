@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import ListOrganizationsService from '@modules/tenants/services/ListOrganizations.service';
 import CreateOrganizationService from '@modules/tenants/services/CreateOrganization.service';
+import ListOrganizationsService from '@modules/tenants/services/ListOrganizations.service';
 
 class OrganizationsController {
   async create(request: Request, response: Response): Promise<Response> {
