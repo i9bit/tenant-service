@@ -1,5 +1,5 @@
-import { QueryResponse, ScanResponse } from '../../../../../@types/dynamoose';
-import ITenantRepository from '../../../repositories/ITenantRepository';
+import { QueryResponse, ScanResponse } from '@config/dynamoose';
+import ITenantRepository from '@modules/tenants/repositories/ITenantRepository';
 import Tenant from '../entities/Tenant';
 
 import Schema from '../entities/Tenant/schema';

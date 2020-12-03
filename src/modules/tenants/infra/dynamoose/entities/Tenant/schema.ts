@@ -1,5 +1,5 @@
+import dynamoose from '@config/database';
 import { Tenant } from '.';
-import dynamoose from '../../../../../../config/database';
 
 const schema = new dynamoose.Schema(
   {

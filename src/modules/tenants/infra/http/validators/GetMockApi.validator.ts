@@ -1,6 +1,6 @@
 import Joi from 'joi';
 import { Request, Response, NextFunction } from 'express';
-import ServiceException from '../../../../../shared/errors/ServiceException';
+import ServiceException from '@shared/errors/ServiceException';
 
 export default async (
   request: Request,

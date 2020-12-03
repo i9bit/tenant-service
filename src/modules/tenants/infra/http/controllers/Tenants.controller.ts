@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import CreateTenantService from '../../../services/CreateTenant.service';
-import ListTenantsService from '../../../services/ListTenants.service';
+import CreateTenantService from '@modules/tenants/services/CreateTenant.service';
+import ListTenantsService from '@modules/tenants/services/ListTenants.service';
 
 class TenantsController {
   async index(_request: Request, response: Response): Promise<Response> {

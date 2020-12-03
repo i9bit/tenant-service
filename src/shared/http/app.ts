@@ -4,9 +4,8 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import '../container';
+import * as logs from '@config/logs';
 import routes from './routes';
-
-import * as logs from '../../config/logs';
 
 import ServiceException from '../errors/ServiceException';
 

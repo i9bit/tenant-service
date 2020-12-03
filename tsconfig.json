@@ -6,7 +6,7 @@
     "module": "commonjs",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "allowSyntheticDefaultImports":true,
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "strict": true,
     "strictPropertyInitialization": false,
@@ -17,7 +17,14 @@
     "noImplicitAny": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@app/*": ["./*"],
+      "@modules/*": ["modules/*"],
+      "@config/*": ["config/*"],
+      "@shared/*": ["shared/*"]
+    },
   },
   "include": ["./**/*.ts"],
   "exclude": [
