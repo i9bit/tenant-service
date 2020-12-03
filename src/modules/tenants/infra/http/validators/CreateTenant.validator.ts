@@ -1,5 +1,6 @@
-import Joi from 'joi';
 import { Request, Response, NextFunction } from 'express';
+import Joi from 'joi';
+
 import ServiceException from '@shared/errors/ServiceException';
 
 export default async (
@@ -9,10 +10,10 @@ export default async (
 ): Promise<void> => {
   try {
     const schema = Joi.object({
-      api_id: Joi.string().required(),
+      alias: Joi.string().alphanum().min(3).max(30).required(),
     });
 
-    await schema.validateAsync(request.params, { abortEarly: false });
+    await schema.validateAsync(request.body, { abortEarly: false });
     return next();
   } catch (err) {
     throw new ServiceException({

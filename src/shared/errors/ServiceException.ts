@@ -1,4 +1,5 @@
 import { ErrorValidationOptions } from 'joi';
+
 import IHttpStatusCode from '../http/IHttpStatusCode';
 
 interface IServiceException {

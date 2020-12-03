@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe';
+
 import { QueryResponse } from '@config/dynamoose';
 
 import Tenant from '../infra/dynamoose/entities/Tenant';

@@ -11,10 +11,11 @@ class TenantsController {
     return response.json(tenants);
   }
 
-  async create(_request: Request, response: Response): Promise<Response> {
+  async create(request: Request, response: Response): Promise<Response> {
+    const { alias } = request.body;
     const createTenantService = container.resolve(CreateTenantService);
     await createTenantService.execute({
-      alias: 'alias',
+      alias,
     });
 
     return response.json();

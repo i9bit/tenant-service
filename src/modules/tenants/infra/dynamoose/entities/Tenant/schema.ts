@@ -1,4 +1,5 @@
 import dynamoose from '@config/database';
+
 import { Tenant } from '.';
 
 const schema = new dynamoose.Schema(

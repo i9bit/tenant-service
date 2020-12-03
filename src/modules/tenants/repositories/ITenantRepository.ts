@@ -1,4 +1,5 @@
 import { QueryResponse, ScanResponse } from '@config/dynamoose';
+
 import Tenant from '../infra/dynamoose/entities/Tenant';
 
 export default interface ITenantRepository {
