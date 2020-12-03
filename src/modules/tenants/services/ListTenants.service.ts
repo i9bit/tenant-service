@@ -1,9 +1,18 @@
-import Tenant from '../models/Tenant';
+import { inject, injectable } from 'tsyringe';
+import { ScanResponse } from '../../../@types/dynamoose';
+import Tenant from '../infra/dynamoose/entities/Tenant';
+import ITenantRepository from '../repositories/ITenantRepository';
 
+@injectable()
 class ListTenantsService {
-  async execute() {
-    return Tenant.All();
+  constructor(
+    @inject('TenantRepository')
+    private tenantRepository: ITenantRepository,
+  ) {}
+
+  async execute(): Promise<ScanResponse<Tenant>> {
+    return this.tenantRepository.findAll();
   }
 }
 
-export default new ListTenantsService();
+export default ListTenantsService;

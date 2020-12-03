@@ -1,13 +1,23 @@
-import Tenant from '../models/Tenant';
+import { inject, injectable } from 'tsyringe';
+import { QueryResponse } from '../../../@types/dynamoose';
+
+import Tenant from '../infra/dynamoose/entities/Tenant';
+import ITenantRepository from '../repositories/ITenantRepository';
 
 interface IListOrganizations {
   id: string;
 }
-class CreateTenantService {
-  async execute({ id }: IListOrganizations) {
-    const response = await Tenant.AllByTenant(id);
-    return response;
+
+@injectable()
+class ListOrganizationsService {
+  constructor(
+    @inject('TenantRepository')
+    private tenantRepository: ITenantRepository,
+  ) {}
+
+  async execute({ id }: IListOrganizations): Promise<QueryResponse<Tenant>> {
+    return this.tenantRepository.findAllOrganizationsByTenant(id);
   }
 }
 
-export default new CreateTenantService();
+export default ListOrganizationsService;

@@ -2,11 +2,13 @@ import express, { Express, Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
 import helmet from 'helmet';
 import cors from 'cors';
+
+import '../container';
 import routes from './routes';
 
-import * as logs from './config/logs';
+import * as logs from '../../config/logs';
 
-import ServiceException from './errors/ServiceException';
+import ServiceException from '../errors/ServiceException';
 
 class App {
   public server: Express;

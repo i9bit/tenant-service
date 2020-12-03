@@ -1,6 +1,8 @@
+import { inject, injectable } from 'tsyringe';
 import { v4 as uuid } from 'uuid';
-import ServiceException from '../errors/ServiceException';
-import Tenant from '../models/Tenant';
+import ServiceException from '../../../shared/errors/ServiceException';
+import Tenant from '../infra/dynamoose/entities/Tenant';
+import ITenantRepository from '../repositories/ITenantRepository';
 
 interface ICreateOrganization {
   alias: string;
@@ -8,9 +10,15 @@ interface ICreateOrganization {
   name: string;
 }
 
+@injectable()
 class CreateOrganizationService {
-  async execute({ id, name, alias }: ICreateOrganization) {
-    const alreadyExists = await Tenant.GetByAlias(alias);
+  constructor(
+    @inject('TenantRepository')
+    private tenantRepository: ITenantRepository,
+  ) {}
+
+  async execute({ id, name, alias }: ICreateOrganization): Promise<Tenant> {
+    const alreadyExists = await this.tenantRepository.getTenantByAlias(alias);
 
     if (alreadyExists.count) {
       throw new ServiceException({
@@ -19,7 +27,7 @@ class CreateOrganizationService {
       });
     }
 
-    const response = await Tenant.Create({
+    const response = await this.tenantRepository.create({
       id,
       organization_id: uuid(),
       active: true,
@@ -30,4 +38,4 @@ class CreateOrganizationService {
   }
 }
 
-export default new CreateOrganizationService();
+export default CreateOrganizationService;

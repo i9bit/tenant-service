@@ -1,7 +1,4 @@
-import {
-  ScanResponse,
-  QueryResponse,
-} from '../../../../../app/@types/dynamoose';
+import { QueryResponse, ScanResponse } from '../../../../../@types/dynamoose';
 import ITenantRepository from '../../../repositories/ITenantRepository';
 import Tenant from '../entities/Tenant';
 

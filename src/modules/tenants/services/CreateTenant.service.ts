@@ -1,12 +1,23 @@
 import { v4 as uuid } from 'uuid';
-import Tenant from '../models/Tenant';
+
+import { inject, injectable } from 'tsyringe';
+
+import ITenantRepository from '../repositories/ITenantRepository';
+import Tenant from '../infra/dynamoose/entities/Tenant';
 
 interface ICreateTenant {
   alias: string;
 }
+
+@injectable()
 class CreateTenantService {
-  async execute({ alias }: ICreateTenant) {
-    const response = await Tenant.Create({
+  constructor(
+    @inject('TenantRepository')
+    private tenantRepository: ITenantRepository,
+  ) {}
+
+  async execute({ alias }: ICreateTenant): Promise<Tenant> {
+    const response = await this.tenantRepository.create({
       id: uuid(),
       organization_id: uuid(),
       active: true,
@@ -17,4 +28,4 @@ class CreateTenantService {
   }
 }
 
-export default new CreateTenantService();
+export default CreateTenantService;

@@ -1,13 +1,17 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 
-import ListOrganizationsService from '../services/ListOrganizations.service';
-import CreateOrganizationService from '../services/CreateOrganization.service';
+import ListOrganizationsService from '../../../services/ListOrganizations.service';
+import CreateOrganizationService from '../../../services/CreateOrganization.service';
 
 class OrganizationsController {
-  async create(request: Request, response: Response) {
+  async create(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
     const { name, alias } = request.body;
-    const organizations = await CreateOrganizationService.execute({
+    const createOrganizationService = container.resolve(
+      CreateOrganizationService,
+    );
+    const organizations = await createOrganizationService.execute({
       id,
       name,
       alias,
@@ -15,11 +19,14 @@ class OrganizationsController {
     return response.json(organizations);
   }
 
-  async index(request: Request, response: Response) {
+  async index(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
-    const organizations = await ListOrganizationsService.execute({ id });
+    const listOrganizationsService = container.resolve(
+      ListOrganizationsService,
+    );
+    const organizations = await listOrganizationsService.execute({ id });
     return response.json(organizations);
   }
 }
 
-export default new OrganizationsController();
+export default OrganizationsController;

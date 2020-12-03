@@ -1,16 +1,19 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 
-import CreateTenantService from '../services/CreateTenant.service';
-import ListTenantsService from '../services/ListTenants.service';
+import CreateTenantService from '../../../services/CreateTenant.service';
+import ListTenantsService from '../../../services/ListTenants.service';
 
 class TenantsController {
-  async index(_request: Request, response: Response) {
-    const tenants = await ListTenantsService.execute();
+  async index(_request: Request, response: Response): Promise<Response> {
+    const listTenantsService = container.resolve(ListTenantsService);
+    const tenants = await listTenantsService.execute();
     return response.json(tenants);
   }
 
-  async create(_request: Request, response: Response) {
-    await CreateTenantService.execute({
+  async create(_request: Request, response: Response): Promise<Response> {
+    const createTenantService = container.resolve(CreateTenantService);
+    await createTenantService.execute({
       alias: 'alias',
     });
 
@@ -18,4 +21,4 @@ class TenantsController {
   }
 }
 
-export default new TenantsController();
+export default TenantsController;
