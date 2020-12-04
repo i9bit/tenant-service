@@ -1,7 +1,7 @@
 {
-  "name": "my-service",
+  "name": "@i9bit/tenant-service",
   "version": "1.0.0",
-  "description": "Serverless webpack example using Typescript",
+  "description": "Serverless application to manager tenants",
   "scripts": {
     "dev": "serverless offline start",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +11,6 @@
     "aws-lambda": "^1.0.6",
     "aws-sdk": "^2.795.0",
     "axios": "^0.21.0",
-    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "debug": "^4.3.1",
     "dynamoose": "^2.4.1",
@@ -54,6 +53,6 @@
     "webpack": "^4.29.0",
     "webpack-node-externals": "^1.7.2"
   },
-  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "author": "@robsonkades",
   "license": "MIT"
 }
