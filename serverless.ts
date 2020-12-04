@@ -3,7 +3,7 @@ import type { Serverless } from 'serverless/aws';
 const serverlessConfiguration: Serverless = {
   configValidationMode: 'warn',
   service: {
-    name: 'fake-api-service',
+    name: 'tenant-service',
   },
   frameworkVersion: '2',
   package: {
@@ -19,7 +19,7 @@ const serverlessConfiguration: Serverless = {
   plugins: ['serverless-webpack', 'serverless-offline'],
   provider: {
     name: 'aws',
-    apiName: 'service-demo',
+    apiName: 'tenant-service',
     timeout: 30,
     runtime: 'nodejs12.x',
     apiGateway: {
@@ -32,6 +32,7 @@ const serverlessConfiguration: Serverless = {
   },
   functions: {
     app: {
+      name: 'tenant-service-app',
       handler: 'src/server.handler',
       events: [
         {
