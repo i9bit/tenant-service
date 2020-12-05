@@ -1,6 +1,6 @@
-import type { Serverless } from 'serverless/aws';
+import type { AWS } from '@serverless/typescript';
 
-const serverlessConfiguration: Serverless = {
+const serverlessConfiguration: AWS = {
   configValidationMode: 'warn',
   service: {
     name: 'tenant-service',

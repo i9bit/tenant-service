@@ -7,7 +7,7 @@ module.exports = {
   context: __dirname,
   mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
   entry: slsw.lib.entries,
-  devtool: slsw.lib.webpack.isLocal ? 'cheap-module-eval-source-map' : 'source-map',
+  devtool: slsw.lib.webpack.isLocal ? 'eval-cheap-module-source-map' : 'source-map',
   resolve: {
     extensions: ['.mjs', '.json', '.ts'],
     symlinks: false,
@@ -24,6 +24,9 @@ module.exports = {
     path: path.join(__dirname, '.webpack'),
     filename: '[name].js',
   },
+  optimization: {
+    concatenateModules: false,
+  },
   target: 'node',
   externals: [nodeExternals()],
   module: {
@@ -37,6 +40,8 @@ module.exports = {
             path.resolve(__dirname, 'node_modules'),
             path.resolve(__dirname, '.serverless'),
             path.resolve(__dirname, '.webpack'),
+            path.resolve(__dirname, '.vscode'),
+            path.resolve(__dirname, 'coverage'),
           ],
         ],
         options: {
