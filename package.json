@@ -4,12 +4,14 @@
   "description": "Serverless application to manager tenants",
   "scripts": {
     "dev": "serverless offline start",
+    "deploy": "serverless deploy",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:server": "ts-node-dev --inspect --ignore-watch node_modules src/app/server.ts"
   },
   "dependencies": {
     "aws-lambda": "^1.0.6",
     "aws-sdk": "^2.804.0",
+    "aws-xray-sdk": "^3.2.0",
     "axios": "^0.21.0",
     "cors": "^2.8.5",
     "debug": "^4.3.1",

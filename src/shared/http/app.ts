@@ -1,3 +1,4 @@
+import AWSXRay from 'aws-xray-sdk';
 import cors from 'cors';
 import express, { Express, Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
@@ -23,6 +24,7 @@ class App {
     this.server.use(helmet());
     this.server.use(cors());
     this.server.use(express.json());
+    this.server.use(AWSXRay.express.openSegment('tenant-service-app'));
   }
 
   routes() {
@@ -59,6 +61,7 @@ class App {
         });
       },
     );
+    this.server.use(AWSXRay.express.closeSegment());
   }
 }
 
