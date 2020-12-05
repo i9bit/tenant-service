@@ -20,11 +20,10 @@
     "emitDecoratorMetadata": true,
     "baseUrl": "./src",
     "paths": {
-      "@app/*": ["./*"],
       "@modules/*": ["modules/*"],
       "@config/*": ["config/*"],
       "@shared/*": ["shared/*"]
-    },
+    }
   },
   "include": ["./**/*.ts"],
   "exclude": [
