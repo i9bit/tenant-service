@@ -80,6 +80,20 @@ const serverlessConfiguration: AWS = {
         },
         {
           http: {
+            method: 'GET',
+            path: '/tenants/{id}/organizations/{organization_id}',
+            request: {
+              parameters: {
+                paths: {
+                  id: true,
+                  organization_id: true,
+                },
+              },
+            },
+          },
+        },
+        {
+          http: {
             method: 'POST',
             path: '/tenants/{id}/organizations',
             cors: true,
@@ -117,6 +131,15 @@ const serverlessConfiguration: AWS = {
               PolicyDocument: {
                 Version: '2012-10-17',
                 Statement: [
+                  {
+                    Effect: 'Allow',
+                    Action: [
+                      'logs:createLogGroup',
+                      'logs:createLogStream',
+                      'logs:putLogEvents',
+                    ],
+                    Resource: 'arn:aws:logs:us-east-1:*:*:*:*',
+                  },
                   {
                     Effect: 'Allow',
                     Action: [

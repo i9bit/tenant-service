@@ -1,10 +1,23 @@
 import { QueryResponse, ScanResponse } from '@config/dynamoose';
-import ITenantRepository from '@modules/tenants/repositories/ITenantRepository';
+import ITenantRepository, {
+  ITenantAndOrganizationRequest,
+} from '@modules/tenants/repositories/ITenantRepository';
 
 import Tenant from '../entities/Tenant';
 import Schema from '../entities/Tenant/schema';
 
 class TenantRepository implements ITenantRepository {
+  getTenantAndOrganization({
+    id,
+    organization_id,
+  }: ITenantAndOrganizationRequest): Promise<QueryResponse<Tenant>> {
+    return Schema.query('id')
+      .eq(id)
+      .where('organization_id')
+      .eq(organization_id)
+      .exec();
+  }
+
   getTenant(id: string): Promise<Tenant> {
     return Schema.get(id);
   }
