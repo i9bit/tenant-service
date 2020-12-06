@@ -32,6 +32,10 @@ const serverlessConfiguration: AWS = {
     apiGateway: {
       minimumCompressionSize: 1024,
     },
+    tracing: {
+      apiGateway: true,
+      lambda: true,
+    },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       DEBUG: '*',
@@ -93,12 +97,6 @@ const serverlessConfiguration: AWS = {
   },
   resources: {
     Resources: {
-      HealthCheckLogGroup: {
-        Type: 'AWS::Logs::LogGroup',
-        Properties: {
-          RetentionInDays: 1,
-        },
-      },
       LambdaRole: {
         Type: 'AWS::IAM::Role',
         Properties: {
