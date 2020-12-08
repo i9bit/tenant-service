@@ -11,7 +11,13 @@ module.exports = {
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/src/',
   }),
+  setupFiles: ['./jest-setup-file.ts'],
   preset: 'ts-jest',
   testEnvironment: 'node',
+  globals: {
+    'ts-jest': {
+      isolatedModules: true,
+    },
+  },
   testMatch: ['**/*.spec.ts'],
 };
