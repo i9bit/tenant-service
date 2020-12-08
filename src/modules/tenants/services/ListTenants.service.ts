@@ -9,7 +9,7 @@ import ITenantRepository from '../repositories/ITenantRepository';
 class ListTenantsService {
   constructor(
     @inject('TenantRepository')
-    private tenantRepository: ITenantRepository,
+    private readonly tenantRepository: ITenantRepository | ITenantRepository,
   ) {}
 
   async execute(): Promise<ScanResponse<Tenant>> {

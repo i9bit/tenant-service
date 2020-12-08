@@ -53,21 +53,21 @@ const serverlessConfiguration: AWS = {
         {
           http: {
             method: 'POST',
-            path: '/tenants',
+            path: '/',
             cors: true,
           },
         },
         {
           http: {
             method: 'GET',
-            path: '/tenants',
+            path: '/',
             cors: true,
           },
         },
         {
           http: {
             method: 'GET',
-            path: '/tenants/{id}/organizations',
+            path: '/{id}/organizations',
             cors: true,
             request: {
               parameters: {
@@ -95,7 +95,7 @@ const serverlessConfiguration: AWS = {
         {
           http: {
             method: 'POST',
-            path: '/tenants/{id}/organizations',
+            path: '/{id}/organizations',
             cors: true,
             request: {
               parameters: {

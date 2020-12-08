@@ -16,7 +16,7 @@ interface ICreateOrganization {
 class CreateOrganizationService {
   constructor(
     @inject('TenantRepository')
-    private tenantRepository: ITenantRepository,
+    private readonly tenantRepository: ITenantRepository | ITenantRepository,
   ) {}
 
   async execute({ id, name, alias }: ICreateOrganization): Promise<Tenant> {

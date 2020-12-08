@@ -4,6 +4,6 @@ import routes from './routes';
 
 const main = Router();
 
-main.use('/tenants', routes);
+main.use(routes);
 
 export default main;

@@ -14,7 +14,7 @@ interface ICreateTenant {
 class CreateTenantService {
   constructor(
     @inject('TenantRepository')
-    private tenantRepository: ITenantRepository,
+    private readonly tenantRepository: ITenantRepository | ITenantRepository,
   ) {}
 
   async execute({ alias }: ICreateTenant): Promise<Tenant> {

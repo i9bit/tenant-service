@@ -13,7 +13,7 @@ interface IListOrganizations {
 class ListOrganizationsService {
   constructor(
     @inject('TenantRepository')
-    private tenantRepository: ITenantRepository,
+    private readonly tenantRepository: ITenantRepository | ITenantRepository,
   ) {}
 
   async execute({ id }: IListOrganizations): Promise<QueryResponse<Tenant>> {

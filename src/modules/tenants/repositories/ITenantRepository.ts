@@ -8,7 +8,7 @@ export interface ITenantAndOrganizationRequest {
 }
 
 export default interface ITenantRepository {
-  getTenant(id: string): Promise<Tenant>;
+  getTenant(id: string): Promise<Tenant | undefined>;
   create(data: Partial<Tenant>): Promise<Tenant>;
   findAll(): Promise<ScanResponse<Tenant>>;
   findAllOrganizationsByTenant(id: string): Promise<QueryResponse<Tenant>>;
