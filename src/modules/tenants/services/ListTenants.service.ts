@@ -13,7 +13,7 @@ class ListTenantsService {
   ) {}
 
   async execute(): Promise<ScanResponse<Tenant>> {
-    return this.tenantRepository.findAll();
+    return this.tenantRepository.all();
   }
 }
 

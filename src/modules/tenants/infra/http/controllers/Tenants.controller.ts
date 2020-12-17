@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
+import { schema as CreateTenantValidator } from '@modules/tenants/infra/http/validators/CreateTenant.validator';
 import CreateTenantService from '@modules/tenants/services/CreateTenant.service';
 import ListTenantsService from '@modules/tenants/services/ListTenants.service';
 
@@ -12,12 +13,12 @@ class TenantsController {
   }
 
   async create(request: Request, response: Response): Promise<Response> {
-    const { alias } = request.body;
+    const { name, master } = await CreateTenantValidator.validate(request.body);
     const createTenantService = container.resolve(CreateTenantService);
     await createTenantService.execute({
-      alias,
+      name,
+      master,
     });
-
     return response.json();
   }
 }

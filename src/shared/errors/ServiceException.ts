@@ -1,11 +1,11 @@
-import { ErrorValidationOptions } from 'joi';
+import { ValidationError } from 'yup';
 
 import IHttpStatusCode from '../http/IHttpStatusCode';
 
 interface IServiceException {
   message: string;
   statusCode?: IHttpStatusCode;
-  messages?: ErrorValidationOptions;
+  messages?: ValidationError;
 }
 
 class ServiceException {
@@ -13,7 +13,7 @@ class ServiceException {
 
   public readonly statusCode: IHttpStatusCode;
 
-  public readonly messages?: ErrorValidationOptions;
+  public readonly messages?: ValidationError;
 
   constructor({
     message,

@@ -38,7 +38,7 @@ const serverlessConfiguration: AWS = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-      DEBUG: '*',
+      DEBUG: 'app:*',
     },
   },
   functions: {
@@ -53,7 +53,7 @@ const serverlessConfiguration: AWS = {
         {
           http: {
             method: 'POST',
-            path: '/',
+            path: '/tenants',
             cors: true,
           },
         },
@@ -67,35 +67,7 @@ const serverlessConfiguration: AWS = {
         {
           http: {
             method: 'GET',
-            path: '/{id}/organizations',
-            cors: true,
-            request: {
-              parameters: {
-                paths: {
-                  id: true,
-                },
-              },
-            },
-          },
-        },
-        {
-          http: {
-            method: 'GET',
-            path: '/tenants/{id}/organizations/{organization_id}',
-            request: {
-              parameters: {
-                paths: {
-                  id: true,
-                  organization_id: true,
-                },
-              },
-            },
-          },
-        },
-        {
-          http: {
-            method: 'POST',
-            path: '/{id}/organizations',
+            path: '/{id}',
             cors: true,
             request: {
               parameters: {

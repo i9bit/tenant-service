@@ -1,7 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
-import Joi from 'joi';
+import * as Yup from 'yup';
 
 import ServiceException from '@shared/errors/ServiceException';
+
+export const schema = Yup.object().shape({
+  name: Yup.string().required().min(3).max(50),
+  master: Yup.boolean().default(false),
+});
 
 export default async (
   request: Request,
@@ -9,17 +14,13 @@ export default async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const schema = Joi.object({
-      alias: Joi.string().alphanum().min(3).max(30).required(),
-    });
-
-    await schema.validateAsync(request.body, { abortEarly: false });
+    await schema.validate(request.body, { abortEarly: false });
     return next();
   } catch (err) {
     throw new ServiceException({
       message: 'Validation failed!',
       statusCode: 400,
-      messages: err.details,
+      messages: err.inner,
     });
   }
 };
