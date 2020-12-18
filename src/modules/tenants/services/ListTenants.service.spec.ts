@@ -16,11 +16,13 @@ describe('ListTenantsService', () => {
 
   it('should be able to list tenants', async () => {
     await createTenantService.execute({
-      alias: 'alias-2',
+      name: 'tenant-1',
+      master: false,
     });
 
     await createTenantService.execute({
-      alias: 'alias-3',
+      name: 'tenant-master',
+      master: true,
     });
 
     const tenants = await listTenantsService.execute();
@@ -28,12 +30,14 @@ describe('ListTenantsService', () => {
     expect(tenants).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
+          name: 'tenant-1',
           active: true,
-          alias: 'alias-2',
+          master: false,
         }),
         expect.objectContaining({
           active: true,
-          alias: 'alias-3',
+          name: 'tenant-master',
+          master: true,
         }),
       ]),
     );
