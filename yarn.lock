@@ -1757,22 +1757,7 @@ aws-lambda@^1.0.6:
     js-yaml "^3.13.1"
     watchpack "^2.0.0-beta.10"
 
-aws-sdk@*, aws-sdk@^2.624.0, aws-sdk@^2.792.0:
-  version "2.799.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.799.0.tgz#8b1a64c1a9f8ccf5794eb07bdd8051e4cb6adcfd"
-  integrity sha512-NYAoiNU+bJXhlJsC0rFqrmD5t5ho7/VxldmziP6HLPYHfOCI9Uvk6UVjfPmhLWPm0mHnIxhsHqmsNGyjhHNYmw==
-  dependencies:
-    buffer "4.9.2"
-    events "1.1.1"
-    ieee754 "1.1.13"
-    jmespath "0.15.0"
-    querystring "0.2.0"
-    sax "1.2.1"
-    url "0.10.3"
-    uuid "3.3.2"
-    xml2js "0.4.19"
-
-aws-sdk@^2.813.0:
+aws-sdk@*, aws-sdk@^2.624.0, aws-sdk@^2.792.0, aws-sdk@^2.813.0:
   version "2.813.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.813.0.tgz#16104b91a286c1fc8ca6480ac32ccebb955f6148"
   integrity sha512-uOeJ6DgsImQLv0eC0KHloFgDP788A1MEYTKdSV+1Bjv1iqQHH3bJcH5DPPX2NSyeaXJAjkVSVT2Fqe4s5Vf9TA==
@@ -2765,10 +2750,10 @@ duplexer3@^0.1.4:
   resolved "https://registry.yarnpkg.com/duplexer3/-/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
   integrity sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=
 
-dynamoose@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/dynamoose/-/dynamoose-2.5.0.tgz#d7cc1ba4a97a83d2e04f4c8a1088848cc2f2998a"
-  integrity sha512-kqUpFqRM3oVjEYb5vY1c3fP2C2YemjgPSzI92oaRhSkg+yEQw5Gzbsage+75xuC7QAP2bLyoHczszYWn3TDubw==
+dynamoose@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/dynamoose/-/dynamoose-2.7.0.tgz#59ec9468d619156b837effa7db3589419acb64b5"
+  integrity sha512-3KLmrDtS8ZB7BfXmDBjQbcWOGHW9uL1kanvD18wG7r2q5WJTfX8VqPPBlWDqjtXl0SrvakzGuWOBgSvtLVBXew==
   dependencies:
     aws-sdk "^2.792.0"
     source-map-support "^0.5.19"
